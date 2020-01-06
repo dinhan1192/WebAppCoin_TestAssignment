@@ -1,0 +1,73 @@
+﻿@model WebAppCoin_TestAssignment.Models.Coin
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Coin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Market.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Market.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseAsset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseAsset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteAsset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuoteAsset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Volumn24h)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volumn24h)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,236 @@
+﻿@model IEnumerable<WebAppCoin_TestAssignment.Models.AppUser>
+@using WebAppCoin_TestAssignment.Models
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    string ids = "";
+    var thisType = "AtView";
+}
+
+<h2>Index</h2>
+
+<p>
+    @*@using (Html.BeginForm("ChooseAction", "AppUsers", FormMethod.Post, new { id = "chooseAction" }))
+        {
+            @Html.DropDownList("ddlAction", new SelectList(BaiTap04_InMemory_NopPhat.Models.Constant.ListAction), new { @class = "form-control" })
+            < input type = "submit" value = "Choose Action" class="btn btn-default" />
+        }*@
+    @*@Html.ActionLink("Create New", "AddUserToRole", "Accounts")*@
+
+    @*<select>
+            <option>Delete</option>
+            <option onclick="location.href='javascript:void(0);'" class="anchorDetail" data-id="1">Add Role</option>
+        </select>*@
+</p>
+<a href="javascript:void(0);" class="anchorDetail" data-parameter="@ids" id="addItem-@thisType" name="addItemName" data-type=@thisType>Add Role</a>
+
+@*<p>
+        @Ajax.ActionLink("Add Role", "AddRolePopup", "AppUsers", new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "result", InsertionMode = InsertionMode.Replace, OnSuccess = "openPopup" })
+    </p>*@
+
+@*<div id="result" style="display:none;">
+        <table class="table">
+            <tr>
+                <th>
+                    Role Name
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in @roles)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>*@
+
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.CheckBox("isAllChoosen", false, new { @id = "chkAffectCheckboxGroup" + thisType })
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDay)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+    @{
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.isChoosen, new { @class = "checkbox-group" + thisType, @id = item.Id })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.CheckBox("isAllChoosen", false, new { @id = "chkAffectCheckboxGroup" })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.CheckBoxFor(modelItem => item.isChoosen, new { @class = "checkbox-group" })
+                    @Html.HiddenFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BirthDay)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>*@
+
+
+
+@section scripts{
+    @Scripts.Render("~/bundles/custom");
+    <script>
+        var TeamDetailPostBackURL = '/AppUsers/AddRolePopup';
+        $(function () {
+            $(".anchorDetail").click(function () {
+                console.log("123456")
+                debugger;
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-parameter');
+                console.log(id);
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $('#myModal').modal('show');
+
+                    },
+                    error: function () {
+                        alert("Dynamic content load failed.");
+                    }
+                });
+                var thisType = $buttonClicked.attr('data-type');
+                var setValues = document.getElementById('addItem-' + thisType).setAttribute('data-parameter', "")
+            });
+            //$("#closebtn").on('click',function(){
+            //    $('#myModal').modal('hide');
+
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+    </script>
+}
+

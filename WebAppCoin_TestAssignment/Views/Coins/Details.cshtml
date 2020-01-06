@@ -1,0 +1,67 @@
+﻿@model WebAppCoin_TestAssignment.Models.Coin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Coin</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Market.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Market.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseAsset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BaseAsset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuoteAsset)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuoteAsset)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Volumn24h)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Volumn24h)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Code }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
